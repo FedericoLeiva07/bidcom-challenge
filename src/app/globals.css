@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@layer base {
+  html {
+    color-scheme: light;
+  }
+}
+
 @theme {
   --color-bidcom-50: #e6e6ff;
   --color-bidcom-100: #ccccff;

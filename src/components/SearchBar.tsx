@@ -20,19 +20,19 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex w-full max-w-md">
+    <div className="flex w-full max-w-lg">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Buscar productos..."
-        className="flex-1 rounded-l-md border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none"
+        className="flex-1 rounded-l-lg border-0 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-white/50 focus:outline-none transition shadow-sm"
       />
       <button
         onClick={handleSearch}
         type="button"
-        className="rounded-r-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+        className="rounded-r-lg bg-white px-5 py-2.5 text-sm font-medium border-l border-gray-300"
       >
         Buscar
       </button>

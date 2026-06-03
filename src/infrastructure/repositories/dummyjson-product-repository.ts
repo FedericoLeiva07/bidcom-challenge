@@ -48,6 +48,13 @@ export class DummyJsonProductRepository implements IProductRepository {
     };
   }
 
+  async getProductsByCategory(slug: string): Promise<Product[]> {
+    const data = await fetchJson<DummyJsonProductsResponse>(
+      `${API_BASE_URL}/products/category/${encodeURIComponent(slug)}`
+    );
+    return data.products.map(mapToProduct);
+  }
+
   async getProductBySku(sku: string): Promise<Product | null> {
     const data = await fetchJson<DummyJsonProductsResponse>(
       `${API_BASE_URL}/products?limit=0`

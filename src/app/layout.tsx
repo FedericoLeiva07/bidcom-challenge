@@ -16,6 +16,12 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Bidcom",
   description: "Tu tienda online de tecnología",
+  openGraph: {
+    title: "Bidcom",
+    description: "Tu tienda online de tecnología",
+    type: "website",
+    locale: "es_AR",
+  },
 };
 
 export default function RootLayout({

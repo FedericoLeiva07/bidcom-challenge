@@ -20,8 +20,8 @@ export function mapToProduct(raw: DummyJsonProduct): Product {
 
 const API_BASE_URL = 'https://dummyjson.com';
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const response = await fetch(url);
+async function fetchJson<T>(url: string, revalidate: number = 3600): Promise<T> {
+  const response = await fetch(url, { next: { revalidate } });
   if (!response.ok) {
     throw new Error(`API error: ${response.status} ${response.statusText}`);
   }
@@ -31,14 +31,16 @@ async function fetchJson<T>(url: string): Promise<T> {
 export class DummyJsonProductRepository implements IProductRepository {
   async getProducts(limit: number): Promise<Product[]> {
     const data = await fetchJson<DummyJsonProductsResponse>(
-      `${API_BASE_URL}/products?limit=${limit}`
+      `${API_BASE_URL}/products?limit=${limit}`,
+      60
     );
     return data.products.map(mapToProduct);
   }
 
   async searchProducts(query: string, limit: number): Promise<SearchResult> {
     const data = await fetchJson<DummyJsonProductsResponse>(
-      `${API_BASE_URL}/products/search?q=${encodeURIComponent(query)}&limit=${limit}`
+      `${API_BASE_URL}/products/search?q=${encodeURIComponent(query)}&limit=${limit}`,
+      60
     );
     return {
       products: data.products.map(mapToProduct),
@@ -50,14 +52,16 @@ export class DummyJsonProductRepository implements IProductRepository {
 
   async getProductsByCategory(slug: string): Promise<Product[]> {
     const data = await fetchJson<DummyJsonProductsResponse>(
-      `${API_BASE_URL}/products/category/${encodeURIComponent(slug)}`
+      `${API_BASE_URL}/products/category/${encodeURIComponent(slug)}`,
+      60
     );
     return data.products.map(mapToProduct);
   }
 
   async getProductBySku(sku: string): Promise<Product | null> {
     const data = await fetchJson<DummyJsonProductsResponse>(
-      `${API_BASE_URL}/products?limit=0`
+      `${API_BASE_URL}/products?limit=0`,
+      3600
     );
     const found = data.products.find((p) => p.sku === sku);
     return found ? mapToProduct(found) : null;
@@ -65,7 +69,8 @@ export class DummyJsonProductRepository implements IProductRepository {
 
   async getCategories(): Promise<Category[]> {
     const data = await fetchJson<DummyJsonCategory[]>(
-      `${API_BASE_URL}/products/categories`
+      `${API_BASE_URL}/products/categories`,
+      86400
     );
     return data.map((cat) => ({
       slug: cat.slug,

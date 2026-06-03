@@ -12,6 +12,12 @@ vi.mock('next/navigation', () => ({
   useRouter: () => ({ push: vi.fn() }),
 }));
 
+vi.mock('next/image', () => ({
+  default: ({ src, alt, ...props }: { src: string; alt: string }) => (
+    <img src={src} alt={alt} {...props} />
+  ),
+}));
+
 describe('Header', () => {
   it('renderiza el logo con link a home', () => {
     render(<Header />);
@@ -21,6 +27,6 @@ describe('Header', () => {
 
   it('contiene el SearchBar', () => {
     render(<Header />);
-    expect(screen.getByPlaceholderText(/buscar productos/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/qué estás buscando/i)).toBeInTheDocument();
   });
 });

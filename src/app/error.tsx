@@ -1,11 +1,15 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function ErrorPage({ reset }: { reset: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center py-20 text-center">
-      <img
+      <Image
         src="/images/illustrations/page_error.svg"
         alt="Error al cargar"
+        width={192}
+        height={192}
         className="mb-8 h-48 w-48"
       />
       <h2 className="mb-2 text-xl font-bold text-gray-900">Algo salió mal</h2>

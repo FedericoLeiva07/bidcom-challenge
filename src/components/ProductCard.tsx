@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { formatPrice } from '@/lib/format-price';
 
 interface ProductCardProps {
   readonly title: string;
@@ -11,9 +13,12 @@ export default function ProductCard({ title, price, thumbnail, sku }: ProductCar
   return (
     <Link href={`/product/${sku}`} className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       <div className="relative overflow-hidden bg-gray-50 p-4">
-        <img
+        <Image
           src={thumbnail}
           alt={title}
+          width={300}
+          height={300}
+          unoptimized
           className="aspect-square w-full rounded-lg object-cover transition-transform duration-300 group-hover:scale-105"
         />
       </div>
@@ -22,7 +27,7 @@ export default function ProductCard({ title, price, thumbnail, sku }: ProductCar
           {title}
         </h3>
         <p className="mt-3 text-2xl font-extrabold text-gray-900">
-          <span className="text-sm font-normal text-gray-500">$</span>{price.toFixed(2)}
+          {formatPrice(price)}
         </p>
       </div>
     </Link>

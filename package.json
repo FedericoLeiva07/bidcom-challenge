@@ -2,11 +2,20 @@
   "name": "bidcom-challenge",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "format": "prettier --write .",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest --run --coverage",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "next": "16.2.7",
@@ -14,13 +23,23 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@storybook/nextjs": "^10.4.2",
+    "@storybook/react": "^10.4.2",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.7",
+    "fast-check": "^4.8.0",
+    "jsdom": "^29.1.1",
+    "prettier": "^3.8.3",
+    "storybook": "^10.4.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.8"
   }
 }

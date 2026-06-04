@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Architecture Review",
+  "description": "Verifica que las operaciones de escritura respeten la arquitectura Clean: dominio sin dependencias externas, componentes sin fetch directo, separación de concerns",
+  "version": "1",
+  "when": {
+    "type": "preToolUse",
+    "toolTypes": [
+      "write"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "If this file is in .kiro/, public/, or is a config file (not under src/), SKIP this check — it is not source code. Otherwise, verify it respects the project architecture: 1) domain/ must NOT import from infrastructure/ or app/, 2) components/ must NOT call fetch directly, 3) infrastructure/ implements domain interfaces only, 4) Client Components ('use client') only where interactivity is needed (useState, useEffect, event handlers). If the file violates these rules, suggest corrections."
+  }
+}

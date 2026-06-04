@@ -17,7 +17,7 @@ describe('Property Tests: SearchBar', () => {
         (query) => {
           mockPush.mockClear();
           const { unmount } = render(<SearchBar />);
-          const input = screen.getByPlaceholderText(/buscar productos/i);
+          const input = screen.getByPlaceholderText(/qué estás buscando/i);
           fireEvent.change(input, { target: { value: query } });
           fireEvent.keyDown(input, { key: 'Enter' });
           expect(mockPush).toHaveBeenCalledWith(`/search?s=${encodeURIComponent(query.trim())}`);

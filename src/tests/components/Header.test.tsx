@@ -27,6 +27,7 @@ describe('Header', () => {
 
   it('contiene el SearchBar', () => {
     render(<Header />);
-    expect(screen.getByPlaceholderText(/qué estás buscando/i)).toBeInTheDocument();
+    const inputs = screen.getAllByPlaceholderText(/qué estás buscando/i);
+    expect(inputs.length).toBeGreaterThan(0);
   });
 });

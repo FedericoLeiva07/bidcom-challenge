@@ -41,7 +41,7 @@ describe('Property Tests: EmptyState', () => {
           const links = screen.getAllByRole('link');
           const firstFive = categories.slice(0, 5);
           firstFive.forEach((cat, i) => {
-            expect(links[i]).toHaveAttribute('href', `/search?s=${encodeURIComponent(cat.name)}`);
+            expect(links[i]).toHaveAttribute('href', `/search?s=${encodeURIComponent(cat.name)}&cat=${encodeURIComponent(cat.slug)}`);
           });
           unmount();
         }

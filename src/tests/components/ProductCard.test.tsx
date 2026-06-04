@@ -29,7 +29,7 @@ describe('ProductCard', () => {
 
   it('renderiza el precio formateado', () => {
     render(<ProductCard {...props} />);
-    expect(screen.getByText('$999.99')).toBeInTheDocument();
+    expect(screen.getByText(/999,99/)).toBeInTheDocument();
   });
 
   it('tiene link correcto al detalle del producto', () => {

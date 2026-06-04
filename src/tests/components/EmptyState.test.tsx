@@ -33,6 +33,6 @@ describe('EmptyState', () => {
   it('cada categoría tiene link correcto a búsqueda', () => {
     render(<EmptyState categories={categories} />);
     const electronicsLink = screen.getByRole('link', { name: 'Electronics' });
-    expect(electronicsLink).toHaveAttribute('href', '/search?s=Electronics');
+    expect(electronicsLink).toHaveAttribute('href', '/search?s=Electronics&cat=electronics');
   });
 });

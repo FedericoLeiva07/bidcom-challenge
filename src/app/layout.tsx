@@ -14,8 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Bidcom",
+  title: {
+    template: '%s | Bidcom',
+    default: 'Bidcom - Tu tienda online de tecnología',
+  },
   description: "Tu tienda online de tecnología",
+  openGraph: {
+    title: "Bidcom",
+    description: "Tu tienda online de tecnología",
+    type: "website",
+    locale: "es_AR",
+  },
 };
 
 export default function RootLayout({

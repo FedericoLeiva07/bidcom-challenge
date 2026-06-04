@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import SearchBar from '@/components/SearchBar';
 
 export default function Header() {
@@ -7,7 +8,7 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 py-3">
         <div className="flex items-center justify-center md:justify-between">
           <Link href="/" className="block">
-            <img src="/images/logo_bidcom.svg" alt="Bidcom" width={130} height={40} />
+            <Image src="/images/logo_bidcom.svg" alt="Bidcom" width={130} height={40} />
           </Link>
           <div className="hidden md:block md:flex-1 md:max-w-lg md:ml-8">
             <SearchBar />

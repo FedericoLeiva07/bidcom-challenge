@@ -15,13 +15,13 @@ describe('SearchBar', () => {
 
   it('renderiza input y botón', () => {
     render(<SearchBar />);
-    expect(screen.getByPlaceholderText(/buscar productos/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/qué estás buscando/i)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /buscar/i })).toBeInTheDocument();
   });
 
   it('navega al presionar Enter', () => {
     render(<SearchBar />);
-    const input = screen.getByPlaceholderText(/buscar productos/i);
+    const input = screen.getByPlaceholderText(/qué estás buscando/i);
     fireEvent.change(input, { target: { value: 'laptop' } });
     fireEvent.keyDown(input, { key: 'Enter' });
     expect(mockPush).toHaveBeenCalledWith('/search?s=laptop');
@@ -29,7 +29,7 @@ describe('SearchBar', () => {
 
   it('navega al hacer click en botón Buscar', () => {
     render(<SearchBar />);
-    const input = screen.getByPlaceholderText(/buscar productos/i);
+    const input = screen.getByPlaceholderText(/qué estás buscando/i);
     fireEvent.change(input, { target: { value: 'phone' } });
     fireEvent.click(screen.getByRole('button', { name: /buscar/i }));
     expect(mockPush).toHaveBeenCalledWith('/search?s=phone');

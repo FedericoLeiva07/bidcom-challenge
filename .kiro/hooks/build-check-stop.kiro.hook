@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Build Check on Stop",
+  "description": "Ejecuta el build de Next.js al detenerse el agente para verificar que todo compila correctamente",
+  "version": "1",
+  "when": {
+    "type": "agentStop"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npx next build 2>&1 | tail -30"
+  }
+}

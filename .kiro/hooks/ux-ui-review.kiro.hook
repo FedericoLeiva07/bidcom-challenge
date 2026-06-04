@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "UX/UI Review",
+  "description": "Analiza páginas y componentes cuando se editan, proponiendo mejoras de colores, layout, fuentes, tamaños y wordings siguiendo el estilo visual de Bidcom",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Actúa como un experto UX/UI designer. Lee todos los archivos en src/components/ y src/app/ que contengan JSX/TSX. Analiza el diseño visual actual y propone mejoras concretas en:\n\n1. **Colores**: Paleta coherente, contraste accesible (WCAG AA mínimo), jerarquía visual\n2. **Layout y posicionamiento**: Espaciados, alineación, uso del grid, responsive behavior\n3. **Tipografía**: Tamaños de fuente, pesos, line-height, jerarquía de headings\n4. **Componentes**: Bordes, sombras, estados hover/focus, transiciones\n5. **Wordings**: Textos de UI en español, claridad, consistencia de tono\n\nContexto: Es un e-commerce estilo Bidcom (argentina), con fondo claro, colores primarios azul/rojo, target de público general.\n\nPara cada mejora, muestra el código actual vs el propuesto con clases de Tailwind. No apliques los cambios directamente — solo lista las propuestas para que el usuario decida cuáles implementar."
+  }
+}
